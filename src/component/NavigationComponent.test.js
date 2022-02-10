@@ -1,8 +1,8 @@
+import renderer from 'react-test-renderer';
 import NavigationComponent from "./NavigationComponent";
 
-describe("NavigationComponent", () => {
-  it("renders correctly", () => {
-    const tree = renderer.create(<NavigationComponent/>).toJSON();
-    expect(tree).toMatchSnapshot();
-  });
+test('Navigation Component Renders', () => {
+  const component = renderer.create(<NavigationComponent/>);
+  let tree = component.toJSON();
+  expect(tree).toMatchSnapshot();
 });
