@@ -1,17 +1,21 @@
 import React from "react";
+import NavigationComponent from "./NavigationComponent";
+
+
 
 class HeaderComponent extends React.Component
 {
-
-
     render()
     {
-
         return (
-            <header>
-                HEADER
-            </header>
-        )
+          <NavigationComponent
+            brandText="The Mystery Market"
+            brandDestination="/"
+            homeText="Home"
+            homeDestination="/home"
+            navigationLinks={[["Products", "/products"]]}
+          />
+        );
     }
 }
 
