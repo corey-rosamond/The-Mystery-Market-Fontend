@@ -2,6 +2,11 @@
   "short_name": "The Mystery Market",
   "name": "The Mystery Market Frontend",
   "icons": [
+    {
+      "src": "286x180_placeholder.svg",
+      "sizes": "286x180",
+      "type": "image/svg"
+    }
 
   ],
   "start_url": ".",
