@@ -1,11 +1,8 @@
 import React from "react";
 
-
-
 import HeaderComponent from "./component/HeaderComponent";
-import SmallProductCardComponent from "./component/SmallProductCardComponent";
-
 import FooterComponent from "./component/FooterComponent";
+import ProductsComponent from "./component/ProductsComponent";
 
 /**
  * App
@@ -49,7 +46,7 @@ class App extends React.Component
       <div className="App">
         <HeaderComponent isLoggedIn={this.state.isLoggedIn}/>
 
-        <SmallProductCardComponent />
+        <ProductsComponent />
 
         <FooterComponent
           copyYear={this.state.copyYear}

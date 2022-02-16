@@ -28,7 +28,6 @@ class NavigationComponent extends React.Component
       homeDestination: props.homeDestination,
       navigationLinks: props.navigationLinks
     };
-    console.log(props)
   }
 
   /**

@@ -6,8 +6,37 @@
       "src": "286x180_placeholder.svg",
       "sizes": "286x180",
       "type": "image/svg"
+    },
+    {
+      "src": "products/LED Sanitizing Wand 1.jpg",
+      "sizes": "800x800",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "products/LED Sanitizing Wand 2.jpg",
+      "sizes": "800x800",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "products/LED Sanitizing Wand 3.jpg",
+      "sizes": "800x800",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "products/LED Sanitizing Wand 4.jpg",
+      "sizes": "800x800",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "products/LED Sanitizing Wand 5.jpg",
+      "sizes": "800x800",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "products/LED Sanitizing Wand 6.jpg",
+      "sizes": "800x800",
+      "type": "image/jpeg"
     }
-
   ],
   "start_url": ".",
   "display": "standalone",
