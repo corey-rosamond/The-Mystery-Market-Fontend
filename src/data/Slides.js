@@ -5,7 +5,7 @@ export const Slides = [
     title: "LED UVC SANITIZING WAND1",
     description: "A rad description1",
     button: "Shop Now!1",
-    backgroundColor: "f5fafd"
+    backgroundColor: "fcf1ed"
   },
   {
     _id: 2,
@@ -13,7 +13,7 @@ export const Slides = [
     title: "LED UVC SANITIZING WAND2",
     description: "A rad description2",
     button: "Shop Now!2",
-    backgroundColor: "f5fafd"
+    backgroundColor: "fbf0f4"
   },
   {
     _id: 3,
@@ -21,7 +21,7 @@ export const Slides = [
     title: "LED UVC SANITIZING WAND3",
     description: "A rad description3",
     button: "Shop Now!3",
-    backgroundColor: "f5fafd"
+    backgroundColor: "fcf1ed"
   },
   {
     _id: 4,
@@ -29,7 +29,7 @@ export const Slides = [
     title: "LED UVC SANITIZING WAND4",
     description: "A rad description4",
     button: "Shop Now!4",
-    backgroundColor: "f5fafd"
+    backgroundColor: "fbf0f4"
   },
   {
     _id: 5,
@@ -37,7 +37,7 @@ export const Slides = [
     title: "LED UVC SANITIZING WAND5",
     description: "A rad description5",
     button: "Shop Now!5",
-    backgroundColor: "f5fafd"
+    backgroundColor: "fcf1ed"
   },
   {
     _id: 6,
@@ -45,6 +45,6 @@ export const Slides = [
     title: "LED UVC SANITIZING WAND6",
     description: "A rad description6",
     button: "Shop Now!6",
-    backgroundColor: "f5fafd"
+    backgroundColor: "fbf0f4"
   }
 ];
