@@ -71,9 +71,9 @@ const Icon = styled.div`
 
 
 /**
- * PopularProductComponent
+ * ProductComponent
  */
-class PopularProductComponent extends React.Component
+class ProductComponent extends React.Component
 {
   constructor(props)
   {
@@ -105,4 +105,4 @@ class PopularProductComponent extends React.Component
   }
 }
 
-export default PopularProductComponent;
+export default ProductComponent;

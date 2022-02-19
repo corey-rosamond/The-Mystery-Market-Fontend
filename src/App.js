@@ -1,6 +1,12 @@
 import React from "react";
 
 import HomePageComponent from "./page/HomePageComponent";
+import ProductListPageComponent from "./page/ProductListPageComponent";
+import ProductPageComponent from "./page/ProductPageComponent";
+import CartPageComponent from "./page/CartPageComponent";
+import LoginPageComponent from "./page/LoginPageComponent";
+import RegisterPageComponent from "./page/RegisterPageComponent";
+
 
 /**
  * App
@@ -18,7 +24,7 @@ class App extends React.Component
   render()
   {
     return (
-      <HomePageComponent />
+      <HomePageComponent/>
     );
   }
 }

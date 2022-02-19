@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import styled from "styled-components";
-import PopularProductComponent from "./PopularProductComponent";
+import ProductComponent from "./ProductComponent";
 import {PopularProducts} from "../data/PopularProducts";
 
 const Container = styled.div`
@@ -11,9 +11,9 @@ const Container = styled.div`
 `;
 
 /**
- * PopularProductsComponent
+ * ProductsComponent
  */
-class PopularProductsComponent extends React.Component
+class ProductsComponent extends React.Component
 {
   /**
    * constructor
@@ -64,7 +64,7 @@ class PopularProductsComponent extends React.Component
       <Container>
         {this.state.products.map(product => {
           return (
-            <PopularProductComponent key={product._id} data={product}/>
+            <ProductComponent key={product._id} data={product}/>
           );
         })}
       </Container>
@@ -72,4 +72,4 @@ class PopularProductsComponent extends React.Component
   }
 }
 
-export default PopularProductsComponent;
+export default ProductsComponent;
