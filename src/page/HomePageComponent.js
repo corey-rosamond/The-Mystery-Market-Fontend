@@ -5,6 +5,7 @@ import NavigationComponent from "../component/NavigationComponent";
 import SliderComponent from "../component/SliderComponent";
 import CategoriesComponent from "../component/CategoriesComponent";
 import PopularProductsComponent from "../component/PopularProductsComponent";
+import NewsletterComponent from "../component/NewsletterComponent";
 
 
 class HomePageComponent extends React.Component
@@ -19,6 +20,7 @@ class HomePageComponent extends React.Component
         <SliderComponent/>
         <CategoriesComponent/>
         <PopularProductsComponent/>
+        <NewsletterComponent/>
       </>
     )
   }

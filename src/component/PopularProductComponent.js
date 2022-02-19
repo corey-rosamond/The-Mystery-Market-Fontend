@@ -1,6 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import {ShoppingCartOutlined, SearchOutlined, HeartBrokenOutlined} from "@mui/icons-material";
+import {
+  ShoppingCartOutlined,
+  SearchOutlined,
+  FavoriteOutlined
+} from "@mui/icons-material";
 
 const Information = styled.div`
   opacity: 0;
@@ -93,7 +97,7 @@ class PopularProductComponent extends React.Component
             <SearchOutlined/>
           </Icon>
           <Icon>
-            <HeartBrokenOutlined/>
+            <FavoriteOutlined/>
           </Icon>
         </Information>
       </Container>
