@@ -1,28 +1,30 @@
 import React from "react";
 import axios from "axios";
-import SmallProductCardComponent from "./SmallProductCardComponent";
+import styled from "styled-components";
+import PopularProductComponent from "./PopularProductComponent";
+import {PopularProducts} from "../data/PopularProducts";
+
+const Container = styled.div`
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+`;
 
 /**
- * ProductsComponent
- *
- * This is the component that will output the full product list.
+ * PopularProductsComponent
  */
-class ProductsComponent extends React.Component
+class PopularProductsComponent extends React.Component
 {
   /**
    * constructor
-   *
-   * basic constructor
    * @param props
    */
   constructor(props)
   {
     super(props);
     this.state = {
-      filters: [],
-      products: []
+      products: PopularProducts
     };
-    this.getProducts();
   }
 
   /**
@@ -59,14 +61,15 @@ class ProductsComponent extends React.Component
   render()
   {
     return (
-      <div>
+      <Container>
         {this.state.products.map(product => {
-          return <SmallProductCardComponent key={product._id} productData={product}/>;
+          return (
+            <PopularProductComponent key={product._id} data={product}/>
+          );
         })}
-      </div>
+      </Container>
     );
   }
 }
 
-// Export the ProductsComponent.
-export default ProductsComponent;
+export default PopularProductsComponent;

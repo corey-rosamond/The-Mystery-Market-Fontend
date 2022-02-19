@@ -27,7 +27,7 @@ const Information = styled.div`
 `;
 
 const Title = styled.h1`
-  color: red;
+  color: black;
   margin: 20px;
 `;
 
