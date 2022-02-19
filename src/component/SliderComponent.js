@@ -8,7 +8,7 @@ import {Slides} from "../data/Slides";
 
 const Container = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 80vh;
   display: flex;
   position: relative;
   overflow:hidden;
@@ -34,7 +34,7 @@ const Arrow = styled.div`
 `;
 
 const Wrapper = styled.div`
-  height: 100vh;
+  height: 80vh;
   display: flex;
   transition: all 1.5s ease;
   transform: translateX(${props=>props.slideIndex * -100}vw);
@@ -58,7 +58,7 @@ const Image = styled.img`
 
 const InformationContainer = styled.div`
   flex: 1;
-  padding: 50px;
+  padding: 30px;
 `;
 
 const Title = styled.h1`

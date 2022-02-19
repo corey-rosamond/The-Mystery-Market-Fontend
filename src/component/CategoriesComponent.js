@@ -8,8 +8,15 @@ const Container = styled.div`
   justify-content: space-between;
 `;
 
+/**
+ * Categories Component
+ */
 class CategoriesComponent extends React.Component
 {
+  /**
+   * constructor
+   * @param props
+   */
   constructor(props)
   {
     super(props);
@@ -18,6 +25,10 @@ class CategoriesComponent extends React.Component
     };
   }
 
+  /**
+   * render
+   * @returns {JSX.Element}
+   */
   render()
   {
     return(
