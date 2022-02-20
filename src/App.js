@@ -15,7 +15,6 @@ import CartPageComponent from "./page/CartPageComponent";
 import LoginPageComponent from "./page/LoginPageComponent";
 import RegisterPageComponent from "./page/RegisterPageComponent";
 
-
 /**
  * App
  *
