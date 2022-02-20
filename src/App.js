@@ -1,5 +1,13 @@
 import React from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect
+} from "react-router-dom";
 
+// These are all the different page components we have in the site
 import HomePageComponent from "./page/HomePageComponent";
 import ProductListPageComponent from "./page/ProductListPageComponent";
 import ProductPageComponent from "./page/ProductPageComponent";
@@ -23,11 +31,40 @@ class App extends React.Component
    */
   render()
   {
+    // Dummy var for testing
+    const user = true;
     return (
-      <HomePageComponent/>
+      <Router>
+        <Switch>
+          <Route exact path="/">
+            <HomePageComponent />
+          </Route>
+          <Route path="/products/:category">
+            <ProductListPageComponent/>
+          </Route>
+          <Route path="/product/:id">
+            <ProductPageComponent/>
+          </Route>
+          <Route path="/cart">
+            <CartPageComponent/>
+          </Route>
+          <Route path="/login">
+            {
+              user ?
+                <Redirect to="/"/>:<LoginPageComponent/>
+            }
+            <LoginPageComponent/>
+          </Route>
+          <Route path="/register">
+            {
+              user ?
+                <Redirect to="/"/>:<RegisterPageComponent/>
+            }
+          </Route>
+        </Switch>
+      </Router>
     );
   }
 }
 
-// Export App
 export default App;
