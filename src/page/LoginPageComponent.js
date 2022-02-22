@@ -3,7 +3,11 @@ import axios from "axios";
 import styled from "styled-components";
 import { mobile } from "../responsive";
 import { connect } from "react-redux";
-import {loginFailure, loginStart, loginSuccess} from "../redux/userSlice";
+import {
+  loginFailure,
+  loginStart,
+  loginSuccess
+} from "../redux/userSlice";
 
 const Container = styled.div`
   background: linear-gradient(45deg,  rgba(66, 183, 245,0.8) 0%,rgba(66, 245, 189,0.4) 100%);
@@ -96,6 +100,10 @@ const Button = styled.button`
   cursor: pointer;
   margin: 10px 0 0 0;
   transition: all 1.5s ease;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
   
   &:hover{
     font-weight: bolder;
@@ -155,13 +163,12 @@ class LoginPageComponent extends React.Component
    */
   async handleSubmit(event)
   {
-
     try
     {
       event.preventDefault();
+      this.props.loginStart();
       let username = this.state.username;
       let password = this.state.password;
-
       let data = await axios.post(
         "http://127.0.0.1:5000/api/users/login",
         {
@@ -169,9 +176,10 @@ class LoginPageComponent extends React.Component
           password
         }
       );
-      localStorage.setItem("authorization_token", data.data.token);
+      this.props.loginSuccess(data.data.user);
     } catch(error)
     {
+      this.props.loginFailure();
       this.setState({
         error: error.response.data.error
       });
