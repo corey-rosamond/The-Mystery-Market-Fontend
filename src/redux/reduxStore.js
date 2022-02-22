@@ -23,10 +23,27 @@ const persistConfig = {
   storage,
 };
 
-const rootReducer = combineReducers({
+const appReducer = combineReducers({
   user: userReducer,
   cart: cartReducer
 });
+
+/**
+ * root Reducer
+ *
+ * This enables logout
+ * @param state
+ * @param action
+ * @returns {EmptyObject & {cart: {error: boolean}, user: {currentUser: boolean, isFetching: boolean, error: boolean}}}
+ */
+const rootReducer = (state, action) => {
+  if (action.type === 'user/logout') {
+
+    // this applies to all keys defined in persistConfig(s)
+    storage.removeItem('persist:root');
+  }
+  return appReducer(state, action)
+}
 
 const persistedReducer = persistReducer(
   persistConfig,

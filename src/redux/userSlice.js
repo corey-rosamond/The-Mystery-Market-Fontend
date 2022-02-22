@@ -22,6 +22,9 @@ export const userSlice = createSlice({
       loginFailure: (state) => {
         state.isFetching = false;
         state.error = true;
+      },
+      logout() {
+        // Intentionally empty
       }
     }
 });
@@ -29,7 +32,8 @@ export const userSlice = createSlice({
 export const {
   loginStart,
   loginSuccess,
-  loginFailure
+  loginFailure,
+  logout
 } = userSlice.actions;
 
 export default userSlice.reducer;

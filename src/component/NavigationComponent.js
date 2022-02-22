@@ -4,9 +4,7 @@ import {
   connect
 } from "react-redux";
 import {
-  loginStart,
-  loginSuccess,
-  loginFailure
+  logout
 } from "../redux/userSlice";
 
 import {
@@ -20,6 +18,7 @@ import {
   Search,
   ShoppingCartOutlined
 } from "@mui/icons-material";
+import AppConfiguration from "../configuration/AppConfiguration.json";
 
 
 const Wrapper = styled.div`
@@ -104,6 +103,19 @@ class NavigationComponent extends React.Component
   }
 
   /**
+   * handleLogout
+   *
+   * This will call the user slice logout method triggering the redux
+   * persistent data to be cleared. Then it will redirect back to the
+   * root of the site forcing an update.
+   */
+  handleLogout()
+  {
+    this.props.logout();
+    window.location.assign(`${AppConfiguration.publicUrl}/`)
+  }
+
+  /**
    * render
    *
    * This a basic render method called by react.
@@ -111,12 +123,7 @@ class NavigationComponent extends React.Component
    */
   render()
   {
-    let UserState = this.props.user;
-
-
-    const username = UserState.username;
-
-
+    let user = this.props.user.currentUser.username;
 
     return (
       <Wrapper>
@@ -134,9 +141,13 @@ class NavigationComponent extends React.Component
         </Center>
         <Right>
           <MenuItem>Register</MenuItem>
-          <Link to="/login">
-            <MenuItem>Login {username}</MenuItem>
-          </Link>
+          {user ?
+            <MenuItem onClick={()=>{this.handleLogout()}}>Logout</MenuItem>
+            :
+            <Link to="/login">
+              <MenuItem>Login </MenuItem>
+            </Link>
+          }
           <MenuItem>
             <Badge badgeContent={4} color="primary">
               <ShoppingCartOutlined/>
@@ -155,8 +166,6 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   {
-    loginStart,
-    loginSuccess,
-    loginFailure
+    logout
   }
 )(NavigationComponent);
