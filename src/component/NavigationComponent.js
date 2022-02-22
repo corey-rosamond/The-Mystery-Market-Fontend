@@ -1,9 +1,22 @@
 import React from "react";
 import styled from "styled-components";
 import {
+  connect,
+  useDispatch
+} from "react-redux";
+import {
+  loginStart,
+  loginSuccess,
+  loginFailure
+} from "../redux/userSlice";
+
+import {
+  Link
+} from "react-router-dom";
+
+import {
   Badge
 } from "@mui/material"
-
 import {
   Search,
   ShoppingCartOutlined
@@ -66,7 +79,6 @@ const MenuItem = styled.div`
   font-weight: bold;
 `;
 
-
 /**
  * NavigationComponent
  *
@@ -100,6 +112,13 @@ class NavigationComponent extends React.Component
    */
   render()
   {
+    let UserState = this.props.user;
+
+
+    const username = UserState.username;
+
+
+
     return (
       <Wrapper>
         <Left>
@@ -116,7 +135,9 @@ class NavigationComponent extends React.Component
         </Center>
         <Right>
           <MenuItem>Register</MenuItem>
-          <MenuItem>Login</MenuItem>
+          <Link to="/login">
+            <MenuItem>Login {username}</MenuItem>
+          </Link>
           <MenuItem>
             <Badge badgeContent={4} color="primary">
               <ShoppingCartOutlined/>
@@ -128,4 +149,15 @@ class NavigationComponent extends React.Component
   }
 }
 
-export default NavigationComponent;
+const mapStateToProps = state => ({
+  user: state.user
+})
+
+export default connect(
+  mapStateToProps,
+  {
+    loginStart,
+    loginSuccess,
+    loginFailure
+  }
+)(NavigationComponent);

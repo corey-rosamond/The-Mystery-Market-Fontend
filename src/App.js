@@ -31,7 +31,7 @@ class App extends React.Component
   render()
   {
     // Dummy var for testing
-    const user = true;
+    const user = false;
     return (
       <Router>
         <Switch>
@@ -52,7 +52,6 @@ class App extends React.Component
               user ?
                 <Redirect to="/"/>:<LoginPageComponent/>
             }
-            <LoginPageComponent/>
           </Route>
           <Route path="/register">
             {

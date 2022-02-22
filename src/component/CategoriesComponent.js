@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import axios from "axios";
 import CategoryItemComponent from "./CategoryItemComponent";
-import {Categories} from "../data/Categories";
+
 
 const Container = styled.div`
   display: flex;
@@ -21,8 +22,46 @@ class CategoriesComponent extends React.Component
   {
     super(props);
     this.state = {
-      categories: Categories
+      categories: []
     };
+  }
+
+  /**
+   * Component Did Mount
+   *
+   * This will call the method that populates the category list once the component has mounted.
+   */
+  componentDidMount()
+  {
+    this.getCategoryList();
+  }
+
+  /**
+   * Get Category List.
+   */
+  getCategoryList()
+  {
+    try
+    {
+      axios.get(
+        "http://localhost:5000/api/category/getAll"
+      ).then((response) => {
+          let data = response.data;
+          if(data.success)
+          {
+            this.setState({
+              categories: data.categories
+            });
+            return true;
+          }
+          return false;
+        }
+      );
+    } catch (error)
+    {
+      // @todo remove before production.
+      console.log(error);
+    }
   }
 
   /**
@@ -34,7 +73,16 @@ class CategoriesComponent extends React.Component
     return(
       <Container>
         {this.state.categories.map(category => {
-          return (<CategoryItemComponent key={category._id} data={category}/>);
+          return (
+            <CategoryItemComponent
+              key={category._id}
+              title={category.title}
+              description={category.description}
+              color={category.color}
+              uri={category.uri}
+              image={category.image}
+              data={category}/>
+          );
         })};
       </Container>
     );

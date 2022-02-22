@@ -1,6 +1,15 @@
 import React from "react";
 import styled from "styled-components";
+import {
+  Link
+} from "react-router-dom";
 
+/**
+ * This is a list of styled components used to create the category item component.
+ * Once the project is further along I would like to move these to some other file and
+ * convert them to more of themed items for site wide use rather than items that only
+ * apply to the Category Item.
+ */
 const Container = styled.div`
   flex: 1;
   margin: 3px;
@@ -27,7 +36,7 @@ const Information = styled.div`
 `;
 
 const Title = styled.h1`
-  color: black;
+  color: ${(props) => props.color};
   margin: 20px;
 `;
 
@@ -53,7 +62,11 @@ class CategoryItemComponent extends React.Component
   {
     super(props);
     this.state = {
-      data: props.data
+      title: props.title,
+      description: props.description,
+      color: props.color,
+      uri: props.uri,
+      image: props.image
     };
   }
 
@@ -63,13 +76,20 @@ class CategoryItemComponent extends React.Component
    */
   render()
   {
-
+    let {
+      image,
+      title,
+      uri,
+      color
+    } = this.state;
     return (
       <Container>
-        <Image src={this.state.data.image} />
+        <Image src={image} />
         <Information>
-          <Title>{this.state.data.title}</Title>
-          <Button>Shop Now</Button>
+          <Title color={color}>{title}</Title>
+          <Link to={`/products/${uri}`}>
+            <Button>Shop Now</Button>
+          </Link>
         </Information>
       </Container>
     );

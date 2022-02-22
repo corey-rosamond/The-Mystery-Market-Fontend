@@ -152,10 +152,6 @@ class FooterComponent extends React.Component
           destination: ""
         },
         {
-          title:"Wishlist",
-          destination: ""
-        },
-        {
           title:"Terms & Conditions",
           destination: ""
         },
