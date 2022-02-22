@@ -3,9 +3,12 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
   Redirect
 } from "react-router-dom";
+import {
+  connect
+} from "react-redux";
+
 
 // These are all the different page components we have in the site
 import HomePageComponent from "./page/HomePageComponent";
@@ -30,8 +33,7 @@ class App extends React.Component
    */
   render()
   {
-    // Dummy var for testing
-    const user = false;
+    let user = this.props.user.currentUser;
     return (
       <Router>
         <Switch>
@@ -65,4 +67,17 @@ class App extends React.Component
   }
 }
 
-export default App;
+/**
+ * mapStateToProps
+ * @param state
+ * @returns {{user: any}}
+ */
+const mapStateToProps = state => ({
+  user: state.user
+})
+
+/** Connect and export the default class component. */
+export default connect(
+  mapStateToProps,
+  null
+)(App);
