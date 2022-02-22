@@ -6,30 +6,44 @@ import { connect } from "react-redux";
 import {loginFailure, loginStart, loginSuccess} from "../redux/userSlice";
 
 const Container = styled.div`
-  width: 100vw;
-  height: 100vh;
-  background: linear-gradient(
-    rgba(255, 255, 255, 0.5),
-    rgba(255, 255, 255, 0.5)
-  ),
-  url("https://images.pexels.com/photos/6984650/pexels-photo-6984650.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
-  center;
-  background-size: cover;
+  background: linear-gradient(45deg,  rgba(66, 183, 245,0.8) 0%,rgba(66, 245, 189,0.4) 100%);
+  color: rgba(#000000, 0.6);
+  font-size: 14px;
+  line-height: 1.6em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: "Roboto", sans-serif;
 `;
 
 const Wrapper = styled.div`
+  z-index: 15;
+  position: relative;
+  background: #ffffff;
   width: 25%;
+  border-radius: 4px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, .1);
+  box-sizing: border-box;
   padding: 20px;
-  background-color: white;
   ${mobile({ width: "75%" })}
 `;
 
 const Title = styled.h1`
   font-size: 24px;
-  font-weight: 300;
+  font-weight: bold;
+  text-align: center;
+  border-bottom: 1px solid gray;
+  padding: 0 0 10px 0;
+  font-family: inherit;
 `;
 
 const Form = styled.form`
@@ -38,32 +52,92 @@ const Form = styled.form`
 `;
 
 const Input = styled.input`
-  flex: 1;
-  min-width: 40%;
-  margin: 10px 0;
-  padding: 10px;
+  outline: none;
+  display: block;
+  background: rgba(0,0,0, 0.1);
+  width: 100%;
+  border: 0;
+  border-radius: 4px;
+  box-sizing: border-box;
+  padding: 12px 20px;
+  color: grey;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 500;
+  line-height: inherit;
+  transition: 0.3s ease;
+  
+  &:focus{
+    color: #333333;
+  }
+`;
+
+const Label = styled.label`
+  font-variant: small-caps;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333333;
+  margin: 5px 0 5px 0;
 `;
 
 const Button = styled.button`
-  width: 40%;
-  border: none;
-  padding: 15px 20px;
-  background-color: teal;
-  color: white;
+  outline: none;
+  background: #4285F4;
+  width: 100%;
+  border: 0;
+  border-radius: 4px;
+  padding: 12px 20px;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 500;
+  line-height: inherit;
+  text-transform: uppercase;
   cursor: pointer;
-  margin-bottom: 10px;
+  margin: 10px 0 0 0;
+  transition: all 1.5s ease;
+  
+  &:hover{
+    font-weight: bolder;
+    background-color: green;
+  }
 `;
 
 const Link = styled.a`
-  margin: 5px 0px;
-  font-size: 12px;
-  text-decoration: underline;
+  margin: 15px 0 0 0;
+  font-size: 16px;
   cursor: pointer;
+  text-align: center;
+  transition: all 0.5s ease;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+  &:hover{
+    text-decoration: underline;
+    font-weight: bold;
+  }
 `;
 
+const Error = styled.div`
+  background-color: orangered;
+  border: 1px solid red;
+  border-radius: 4px;
+  color: white;
+  padding: 5px 5px 5px 10px;
+  margin: 10px 0 0 0;
+  font-size: 16px;
+`;
+
+/**
+ * LoginPageComponent
+ */
 class LoginPageComponent extends React.Component
 {
-
+  /**
+   * constructor
+   * @param props
+   */
   constructor(props)
   {
     super(props);
@@ -74,6 +148,11 @@ class LoginPageComponent extends React.Component
     };
   }
 
+  /**
+   * handleSubmit
+   * @param event
+   * @returns {Promise<void>}
+   */
   async handleSubmit(event)
   {
 
@@ -103,28 +182,31 @@ class LoginPageComponent extends React.Component
 
   }
 
+  /**
+   * render
+   * @returns {JSX.Element}
+   */
   render()
   {
     return (
       <Container>
         <Wrapper>
           <Title>SIGN IN</Title>
-          <p>{this.state.error}</p>
+          {this.state.error !== "" ? <Error><strong>Error</strong>: {this.state.error}</Error> : ""}
           <Form>
+            <Label>username</Label>
             <Input
-              placeholder="username"
               onChange={e => this.setState({username: e.target.value})}
             />
+            <Label>password</Label>
             <Input
               type="password"
-              placeholder="password"
               onChange={e => this.setState({password: e.target.value})}
             />
             <Button
               onClick={e => { this.handleSubmit(e) }}
             >LOGIN</Button>
-            <Link>DO NOT YOU REMEMBER THE PASSWORD?</Link>
-            <Link>CREATE A NEW ACCOUNT</Link>
+            <Link to="\forgot-password">Forgot Password?</Link>
           </Form>
         </Wrapper>
       </Container>
@@ -132,10 +214,16 @@ class LoginPageComponent extends React.Component
   }
 }
 
+/**
+ * mapStateToProps
+ * @param state
+ * @returns {{user: any}}
+ */
 const mapStateToProps = state => ({
   user: state.user
 })
 
+/** Connect and export the default class component. */
 export default connect(
   mapStateToProps,
   {
